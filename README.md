@@ -25,7 +25,7 @@ This project helps students and educators automate note-taking and focus more on
 
 lecture-voice-to-smart-notes/
 │
-├── gradio_app.py → Gradio web interface
+├── app.py → Gradio web interface
 ├── requirements.txt
 ├── .env.example → Environment variable template
 │

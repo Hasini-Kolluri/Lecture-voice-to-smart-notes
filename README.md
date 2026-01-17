@@ -1,7 +1,7 @@
 # 🎙️ Lecture Voice to Notes
 
 An end-to-end AI-powered application that converts lecture audio/video into structured, readable notes.
-The system uses Automatic Speech Recognition (ASR), text chunking, and keyword extraction, wrapped inside an interactive Streamlit web interface.
+The system uses Automatic Speech Recognition (ASR), text chunking, and keyword extraction, wrapped inside an interactive Gradio web interface.
 
 This project helps students and educators automate note-taking and focus more on learning instead of writing.
 
@@ -12,33 +12,39 @@ This project helps students and educators automate note-taking and focus more on
 - Upload lecture audio or video files
 - Accurate speech-to-text transcription using OpenAI Whisper
 - Intelligent text chunking for long lectures
+- Generates structured, readable notes
 - Keyword extraction using TF-IDF
 - Export notes as DOCX and TXT
-- Interactive Streamlit UI
+- Interactive Gradio UI
 - Modular and scalable codebase
 
 --------------------------------------------------
 
 🏗️ PROJECT STRUCTURE
 
-lecture-voice-to-notes/
+lecture-voice-to-smart-notes/
 │
-├── app.py                     → Streamlit UI
+├── gradio_app.py → Gradio web interface
 ├── requirements.txt
+├── .env.example → Environment variable template
 │
 ├── src/
-│   ├── asr/
-│   │   └── whisper_transcribe.py
-│   │
-│   ├── processing/
-│   │   ├── chunking.py
-│   │   └── keyword_extraction.py
-│   │
-│   ├── export/
-│   │   ├── docx_export.py
-│   │   └── txt_export.py
-│   │
-│   └── pipeline.py            → End-to-end pipeline
+│ ├── asr/
+│ │ └── whisper_transcribe.py → Audio to text (Whisper)
+│ │
+│ ├── nlp/
+│ │ ├── text_cleaning.py → Text preprocessing
+│ │ ├── chunking.py → Long text chunking
+│ │ ├── keyword_extraction.py → TF-IDF keywords
+│ │ └── summarization.py → Notes generation logic
+│ │
+│ ├── notes/
+│ │ └── note_formatter.py → Final note formatting
+│ │
+│ ├── export/
+│ │ └── docx_export.py → DOCX export
+│ │
+│ └── pipeline.py → End-to-end processing pipeline
 │
 └── README.md
 
@@ -49,8 +55,8 @@ lecture-voice-to-notes/
 - Python 3.10+
 - OpenAI Whisper for speech-to-text
 - Scikit-learn for TF-IDF keyword extraction
-- NumPy and Pandas for text processing
-- Streamlit for web UI
+- NLTK for text processing
+- Gradio for web UI
 - python-docx for DOCX export
 - FFmpeg for audio preprocessing
 
@@ -78,10 +84,10 @@ Note: Make sure FFmpeg is installed and added to your system PATH.
 
 ▶️ RUNNING THE APPLICATION
 
-streamlit run app.py
+python gradio_app.py
 
 Then open your browser at:
-http://localhost:8501
+http://localhost:7860
 
 --------------------------------------------------
 

@@ -59,6 +59,16 @@ lecture-voice-to-smart-notes/
 
 --------------------------------------------------
 
+## 🔄 Project Flow
+
+1. User uploads a lecture audio file
+2. Audio is converted to text
+3. Text is cleaned and chunked
+4. Keywords are extracted using NLP
+5. Notes are generated using AI
+6. User can download notes as PDF or DOCX
+
+---------------------------------------------------
 🔑 GEMINI API KEY SETUP
 
 This project requires a Gemini API key.

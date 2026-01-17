@@ -19,6 +19,7 @@ This project helps students and educators automate note-taking and focus more on
 - Modular and scalable codebase
 
 --------------------------------------------------
+<pre>
 
 🏗️ PROJECT STRUCTURE
 
@@ -48,6 +49,7 @@ lecture-voice-to-smart-notes/
 │
 └── README.md
 
+<pre>
 --------------------------------------------------
 
 🛠️ TECH STACK

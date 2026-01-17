@@ -43,19 +43,25 @@ lecture-voice-to-smart-notes/
 ├── .env.example
 │
 ├── src/
+│   │
 │   ├── asr/
 │   │   └── whisper_transcribe.py
+│   │
 │   ├── nlp/
 │   │   ├── text_cleaning.py
 │   │   ├── chunking.py
 │   │   ├── keyword_extraction.py
 │   │   └── summarization.py
+│   │
 │   ├── notes/
 │   │   └── note_formatter.py
+│   │
 │   ├── export/
 │   │   ├── pdf_export.py
 │   │   └── docx_export.py
+│   │
 │   └── pipeline.py
+
 
 --------------------------------------------------
 

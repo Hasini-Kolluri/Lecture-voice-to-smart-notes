@@ -1,46 +1,48 @@
-import os
-import time
-import streamlit as st
-from dotenv import load_dotenv
 from google import genai
-from google.genai.errors import ClientError
+import os
+from dotenv import load_dotenv
 
 load_dotenv()
 
 client = genai.Client(api_key=os.getenv("GEMINI_API_KEY"))
 
-def _call_gemini_with_retry(prompt: str, retries: int = 3):
-    """
-    Retry Gemini calls when the model is overloaded (503).
-    """
-    for i in range(retries):
-        try:
-            return client.models.generate_content(
-                model="models/gemini-flash-latest",
-                contents=prompt
-            )
-        except ClientError as e:
-            # Retry only for temporary overload
-            if "UNAVAILABLE" in str(e) or "503" in str(e):
-                time.sleep(2 ** i)  # 1s, 2s, 4s
-            else:
-                raise
-    raise RuntimeError("Gemini is temporarily overloaded. Please retry in a minute.")
+PROMPTS = {
+    "concise": """
+Convert the lecture into SHORT, crisp study notes.
+- Headings
+- Bullet points
+- Very brief
+""",
 
-@st.cache_data(show_spinner=False)
-def summarize_text(text: str) -> str:
-    prompt = f"""
-Convert the following lecture transcript into clean, structured study notes.
-
-Rules:
+    "detailed": """
+Convert the lecture into DETAILED structured notes.
 - Clear headings
 - Bullet points
-- Academic tone
-- No emojis
-- No dates or metadata
+- Explanations where needed
+""",
 
-Transcript:
+    "exam": """
+Convert the lecture into EXAM-FOCUSED notes.
+- Definitions
+- Important points
+- Possible questions
+- Formulae (if any)
+"""
+}
+
+def summarize_text(chunks, mode="concise"):
+    text = " ".join(chunks)
+
+    prompt = f"""
+{PROMPTS.get(mode, PROMPTS['concise'])}
+
+Lecture:
 {text}
 """
-    response = _call_gemini_with_retry(prompt)
+
+    response = client.models.generate_content(
+        model="models/gemini-flash-latest",
+        contents=prompt
+    )
+
     return response.text

@@ -1,4 +1,3 @@
-streamlit
 gradio
 python-dotenv
 pydub
@@ -7,6 +6,5 @@ torch
 torchaudio
 google-genai
 python-docx
-fpdf2
 nltk
 scikit-learn

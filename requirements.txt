@@ -1,0 +1,12 @@
+streamlit
+gradio
+python-dotenv
+pydub
+openai-whisper
+torch
+torchaudio
+google-genai
+python-docx
+fpdf2
+nltk
+scikit-learn

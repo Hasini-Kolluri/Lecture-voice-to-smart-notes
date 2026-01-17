@@ -1,146 +1,126 @@
-# 🎓 Lecture Voice to Smart Notes Generator
+# 🎙️ Lecture Voice to Notes
 
-A Streamlit-based application that converts lecture audio or video files into clean, structured study notes using speech recognition, NLP, and the Gemini API.
+An end-to-end AI-powered application that converts lecture audio/video into structured, readable notes.
+The system uses Automatic Speech Recognition (ASR), text chunking, and keyword extraction, wrapped inside an interactive Streamlit web interface.
+
+This project helps students and educators automate note-taking and focus more on learning instead of writing.
 
 --------------------------------------------------
 
-✨ FEATURES
+🚀 FEATURES
 
-- Upload lecture audio or video files (wav, mp3, m4a, mp4)
-- Automatic speech-to-text transcription using Whisper
-- Text cleaning and chunking
+- Upload lecture audio or video files
+- Accurate speech-to-text transcription using OpenAI Whisper
+- Intelligent text chunking for long lectures
 - Keyword extraction using TF-IDF
-- AI-generated notes using Gemini
-- Multiple note styles:
-  - Concise
-  - Detailed
-  - Exam-focused
-- Export notes as TXT, PDF, or DOCX
-- Simple and clean Streamlit UI
+- Export notes as DOCX and TXT
+- Interactive Streamlit UI
+- Modular and scalable codebase
 
 --------------------------------------------------
 
-🧠 TECH STACK
+🏗️ PROJECT STRUCTURE
 
-- Python
-- Streamlit
-- OpenAI Whisper
-- Gemini API
-- Scikit-learn
-- NLTK
-- FPDF
-- python-docx
-
---------------------------------------------------
-
-📂 PROJECT STRUCTURE
-
-<pre>
-lecture-voice-to-smart-notes/
+lecture-voice-to-notes/
 │
-├── app.py
-├── main.py
+├── app.py                     → Streamlit UI
 ├── requirements.txt
-├── .env.example
 │
 ├── src/
 │   ├── asr/
 │   │   └── whisper_transcribe.py
 │   │
-│   ├── nlp/
-│   │   ├── text_cleaning.py
+│   ├── processing/
 │   │   ├── chunking.py
-│   │   ├── keyword_extraction.py
-│   │   └── summarization.py
-│   │
-│   ├── notes/
-│   │   └── note_formatter.py
+│   │   └── keyword_extraction.py
 │   │
 │   ├── export/
-│   │   ├── pdf_export.py
-│   │   └── docx_export.py
+│   │   ├── docx_export.py
+│   │   └── txt_export.py
 │   │
-│   └── pipeline.py
-</pre>
+│   └── pipeline.py            → End-to-end pipeline
+│
+└── README.md
 
 --------------------------------------------------
 
-## 🔄 Project Flow
+🛠️ TECH STACK
 
-1. User uploads a lecture audio file
-2. Audio is converted to text
-3. Text is cleaned and chunked
-4. Keywords are extracted using NLP
-5. Notes are generated using AI
-6. User can download notes as PDF or DOCX
-
----------------------------------------------------
-🔑 GEMINI API KEY SETUP
-
-This project requires a Gemini API key.
-
-Step 1:
-Go to https://ai.google.dev  
-Create a project and generate an API key.
-
-Step 2:
-Create a file named .env in the project root and add:
-
-GEMINI_API_KEY=your_api_key_here
-
-⚠️ Do NOT commit this file to GitHub.
+- Python 3.10+
+- OpenAI Whisper for speech-to-text
+- Scikit-learn for TF-IDF keyword extraction
+- NumPy and Pandas for text processing
+- Streamlit for web UI
+- python-docx for DOCX export
+- FFmpeg for audio preprocessing
 
 --------------------------------------------------
 
-📄 ENV EXAMPLE
+📦 INSTALLATION & SETUP
 
-The repository includes a file named .env.example with this content:
+1. Clone the repository
 
-GEMINI_API_KEY=
+git clone https://github.com/your-username/lecture-voice-to-notes.git
+cd lecture-voice-to-notes
 
-This clearly shows where the API key should be added.
+2. Create and activate virtual environment
 
---------------------------------------------------
-
-▶️ RUN THE PROJECT LOCALLY
-
-1. Clone the repository:
-git clone https://github.com/Hasini-Kolluri/Lecture-voice-to-smart-notes
-cd Lecture-voice-to-smart-notes
-
-2. Create and activate environment:
-conda create -n lecture-notes python=3.10
+conda create -n lecture-notes python=3.10 -y
 conda activate lecture-notes
 
-3. Install dependencies:
+3. Install dependencies
+
 pip install -r requirements.txt
 
-4. Run the app:
+Note: Make sure FFmpeg is installed and added to your system PATH.
+
+--------------------------------------------------
+
+▶️ RUNNING THE APPLICATION
+
 streamlit run app.py
 
---------------------------------------------------
-
-📝 NOTE STYLES
-
-Concise:
-Short bullet points for quick revision.
-
-Detailed:
-Structured explanations with more depth.
-
-Exam-focused:
-Definitions, keywords, and important exam points.
+Then open your browser at:
+http://localhost:8501
 
 --------------------------------------------------
 
-⚠️ GEMINI FREE TIER NOTICE
+🔄 WORKFLOW
 
-Gemini free tier has request limits.
-
-If you see:
-AI service temporarily busy or overloaded
-
-Wait 30–60 seconds and click Rerun.
-You do NOT need to upload the file again.
+1. Upload lecture audio or video
+2. Convert speech to text using Whisper
+3. Clean and chunk long text
+4. Extract important keywords using TF-IDF
+5. Generate structured notes
+6. Export notes as DOCX or TXT
 
 --------------------------------------------------
+
+📌 USE CASES
+
+- College lecture note generation
+- Online course transcription
+- Exam revision notes
+- Educational YouTube video notes
+
+--------------------------------------------------
+
+🧪 CURRENT LIMITATIONS
+
+- No abstractive summarization yet
+- Best performance with clear audio
+- Uses CPU-based Whisper model by default
+
+--------------------------------------------------
+
+🔮 FUTURE ENHANCEMENTS
+
+- LLM-based abstractive summarization
+- Multilingual transcription
+- Topic-wise note structuring
+- Cloud deployment
+- Keyword and topic visualization
+
+------------------------------------------------
+
+"Turn lectures into knowledge, automatically."

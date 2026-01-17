@@ -49,7 +49,7 @@ lecture-voice-to-smart-notes/
 │
 └── README.md
 
-<pre>
+</pre>
 --------------------------------------------------
 
 🛠️ TECH STACK

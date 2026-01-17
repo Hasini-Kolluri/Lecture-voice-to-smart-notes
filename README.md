@@ -35,6 +35,7 @@ A Streamlit-based application that converts lecture audio or video files into cl
 
 📂 PROJECT STRUCTURE
 
+<pre>
 lecture-voice-to-smart-notes/
 │
 ├── app.py
@@ -43,7 +44,6 @@ lecture-voice-to-smart-notes/
 ├── .env.example
 │
 ├── src/
-│   │
 │   ├── asr/
 │   │   └── whisper_transcribe.py
 │   │
@@ -61,7 +61,7 @@ lecture-voice-to-smart-notes/
 │   │   └── docx_export.py
 │   │
 │   └── pipeline.py
-
+</pre>
 
 --------------------------------------------------
 
